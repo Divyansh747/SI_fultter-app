@@ -4,8 +4,13 @@ void main() {
 
   runApp(
       MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Simple Interest Calculator App',
         home: SIForm(),
+        theme: ThemeData(
+          primaryColor: Colors.indigo,
+          accentColor: Colors.indigoAccent
+        ),
       )//Material APP
   );
 }
