@@ -8,6 +8,7 @@ void main() {
         title: 'Simple Interest Calculator App',
         home: SIForm(),
         theme: ThemeData(
+          brightness: Brightness.dark,
           primaryColor: Colors.indigo,
           accentColor: Colors.indigoAccent
         ),
@@ -118,7 +119,7 @@ class _SIFormState extends State<SIForm> {
                 child: Row(children: <Widget>[
               Expanded(
                 child: RaisedButton(
-                  child: Text('Calculate'),
+                  child: Text('Calculate',style: textStyle,),
                   onPressed: (){
 
                   },
@@ -127,7 +128,7 @@ class _SIFormState extends State<SIForm> {
 
               Expanded(
                 child: RaisedButton(
-                  child: Text('Reset'),
+                  child: Text('Reset',style: textStyle,),
                   onPressed: (){
 
                   },
@@ -137,7 +138,7 @@ class _SIFormState extends State<SIForm> {
             ],)),
 
             Padding(padding: EdgeInsets.all(_minimumPadding*2),
-            child: Text('Todo Text'),
+            child: Text('Todo Text', style: textStyle,),
             )
 
           ],
