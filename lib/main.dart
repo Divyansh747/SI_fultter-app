@@ -30,6 +30,7 @@ class _SIFormState extends State<SIForm> {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle textStyle = Theme.of(context).textTheme.title;
     return Scaffold(
       //resizeToAvoidBottomPadding: false, //this will remove overflowed issue
       appBar: AppBar(
@@ -46,9 +47,11 @@ class _SIFormState extends State<SIForm> {
               padding: EdgeInsets.only(top: _minimumPadding,bottom: _minimumPadding),
                 child: TextField(
               keyboardType: TextInputType.number,
+              style: textStyle,
               decoration: InputDecoration(
                   labelText: 'Principal',
                   hintText: 'Enter Principal e.g. 10000',
+                  labelStyle: textStyle,
                   border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.0)
               )
@@ -59,9 +62,11 @@ class _SIFormState extends State<SIForm> {
                 padding: EdgeInsets.only(top: _minimumPadding,bottom: _minimumPadding),
                 child: TextField(
               keyboardType: TextInputType.number,
+              style: textStyle,
               decoration: InputDecoration(
                   labelText: 'Rate of Interest',
                   hintText: 'Enter Percent',
+                  labelStyle: textStyle,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0)
                   )
@@ -75,9 +80,11 @@ class _SIFormState extends State<SIForm> {
 
               Expanded(child:TextField(
                 keyboardType: TextInputType.number,
+                style: textStyle,
                 decoration: InputDecoration(
                     labelText: 'Term',
                     hintText: 'Time in Years',
+                    labelStyle: textStyle,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)
                     )
