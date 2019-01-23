@@ -31,6 +31,13 @@ class _SIFormState extends State<SIForm> {
 
   var _currentItemSelected = 'Rupees';
 
+  //Controllers will help to extracts data from below inputs
+  TextEditingController principalController = TextEditingController();
+  TextEditingController roiController       = TextEditingController();
+  TextEditingController termController      = TextEditingController();
+
+  var displayResult = '';
+
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.title;
@@ -51,6 +58,7 @@ class _SIFormState extends State<SIForm> {
                 child: TextField(
               keyboardType: TextInputType.number,
               style: textStyle,
+              controller: principalController,
               decoration: InputDecoration(
                   labelText: 'Principal',
                   hintText: 'Enter Principal e.g. 10000',
@@ -66,6 +74,7 @@ class _SIFormState extends State<SIForm> {
                 child: TextField(
               keyboardType: TextInputType.number,
               style: textStyle,
+              controller: roiController,
               decoration: InputDecoration(
                   labelText: 'Rate of Interest',
                   hintText: 'Enter Percent',
@@ -84,6 +93,7 @@ class _SIFormState extends State<SIForm> {
               Expanded(child:TextField(
                 keyboardType: TextInputType.number,
                 style: textStyle,
+                controller: termController,
                 decoration: InputDecoration(
                     labelText: 'Term',
                     hintText: 'Time in Years',
@@ -127,7 +137,10 @@ class _SIFormState extends State<SIForm> {
                   textColor: Theme.of(context).primaryColorDark,
                   child: Text('Calculate',textScaleFactor: 1.5,),
                   onPressed: (){
+                      setState(() {
 
+                       this.displayResult = _calculateTotalReturns();
+                      });
                   },
                 ),
               ),
@@ -146,7 +159,7 @@ class _SIFormState extends State<SIForm> {
             ],)),
 
             Padding(padding: EdgeInsets.all(_minimumPadding*2),
-            child: Text('Todo Text', style: textStyle,),
+            child: Text(this.displayResult, style: textStyle,),
             )
 
           ],
@@ -165,6 +178,19 @@ class _SIFormState extends State<SIForm> {
     setState(() {
       this._currentItemSelected = newValueSelected;
     });
+  }
+
+  String _calculateTotalReturns(){
+    double principal = double.parse(principalController.text);
+    double roi = double.parse(roiController.text);
+    double term = double.parse(termController.text);
+
+    double totalAmountPayable = principal + (principal * roi * term) / 100;
+
+    String result = 'After $term years, your investment will be worth $totalAmountPayable $_currentItemSelected';
+
+    return result;
+
   }
 
 }
